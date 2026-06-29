@@ -1,0 +1,6 @@
+{
+  "name": "ClutchMind",
+  "description": "An AI-powered, high-fidelity clutch productivity companion that breaks down tasks into atomic lanes, defuses last-minute procrastination, and triggers rapid focus.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

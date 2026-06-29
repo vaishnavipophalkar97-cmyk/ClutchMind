@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile containing points, streak, and preferences",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "avatar": { "type": "string" },
+        "personality": { "type": "string" },
+        "focusGoal": { "type": "string" },
+        "points": { "type": "integer" },
+        "streak": { "type": "integer" },
+        "lastActive": { "type": "string" },
+        "completedQuiz": { "type": "boolean" },
+        "badges": { "type": "array" }
+      },
+      "required": ["username", "avatar", "points", "streak", "completedQuiz", "badges"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "A task with optional subtasks and difficulty levels",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "priority": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "deadline": { "type": "string" },
+        "difficulty": { "type": "string" },
+        "subtasks": { "type": "array" }
+      },
+      "required": ["id", "title", "category", "priority", "completed"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Alert notification generated for the user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "title", "message", "type", "timestamp", "read"]
+    },
+    "ForumPost": {
+      "title": "ForumPost",
+      "description": "Shared community forum post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "authorName": { "type": "string" },
+        "avatarSeed": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "likes": { "type": "integer" },
+        "replies": { "type": "array" },
+        "userLiked": { "type": "boolean" }
+      },
+      "required": ["id", "authorName", "title", "category", "content", "likes", "replies"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile document"
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": { "$ref": "#/entities/Task" },
+      "description": "User specific tasks"
+    },
+    "/users/{userId}/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/Notification" },
+      "description": "User specific notifications"
+    },
+    "/posts/{postId}": {
+      "schema": { "$ref": "#/entities/ForumPost" },
+      "description": "Shared community posts"
+    }
+  }
+}
